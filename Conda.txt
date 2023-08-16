@@ -1,0 +1,3 @@
+
+conda install d2l
+conda install pytorch::pytorch torchvision torchaudio -c pytorch
