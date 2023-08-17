@@ -19,6 +19,13 @@ This was where I got the d2l_torch.py
 cp /Users/sfwu/anaconda3/envs/d2l2/lib/python3.9/site-packages/d2l/torch.py d2l_torch_local.py
 So, I called it d2l_torch_local.py (and intend to modify and study deeper....)
 
+Furthermore, the github version of the file either
+https://d2l.ai/_modules/d2l/torch.html
+or
+https://github.com/d2l-ai/d2l-en/blob/master/d2l/torch.py
+is different from the local copy (and yes, it won't work with the code).
+So, I am using the one from site-packages/d2l/torch.py.
+
 conda create -n local_d2l python=3.10
 conda update --all                     <== unsure whether this was necessary, anyway....
 conda install pandas --channel conda-forge --channel bioconda
