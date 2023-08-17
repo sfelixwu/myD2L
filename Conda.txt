@@ -1,3 +1,67 @@
 
-conda install d2l
-conda install pytorch::pytorch torchvision torchaudio -c pytorch
+Instructions for Conda set-up (for the EthikOS project) --
+by S. Felix Wu sfwu@ucdavis.edu
+
+Case [1] ==> using the d2l package
+
+conda create -n d2l python=3.10
+conda install d2l --channel conda-forge --channel bioconda
+conda install pytorch::pytorch -c pytorch --channel conda-forge --channel bioconda
+conda install torchvision -c pytorch --channel conda-forge --channel bioconda
+conda install torchaudio -c pytorch --channel conda-forge --channel bioconda
+
+to test it:
+$ python Ch10_002.py
+
+Case [2] ==> *** NOT *** installing the d2l package (instead, having a local copy of d2l_torch.py
+
+This was where I got the d2l_torch.py
+cp /Users/sfwu/anaconda3/envs/d2l2/lib/python3.9/site-packages/d2l/torch.py d2l_torch_local.py
+So, I called it d2l_torch_local.py (and intend to modify and study deeper....)
+
+conda create -n local_d2l python=3.10
+conda update --all                     <== unsure whether this was necessary, anyway....
+conda install pandas --channel conda-forge --channel bioconda
+conda install scipy --channel conda-forge --channel bioconda
+conda install pytorch::pytorch -c pytorch --channel conda-forge --channel bioconda
+conda install torchvision -c pytorch --channel conda-forge --channel bioconda
+conda install torchaudio -c pytorch --channel conda-forge --channel bioconda
+conda install IPython -c pytorch --channel conda-forge --channel bioconda
+conda install matplotlib -c pytorch --channel conda-forge --channel bioconda
+
+(for some reason, following this particular order, I avoided the package dependency conflicts with Conda.)
+
+to test it:
+$ python Ch10_002_local.py
+
+If all going well, the above two tests should provide very similar results.
+
+*** HELP ME with the following ***
+
+As I am still new to Python, I found this interesting:
+
+With the imported d2l, the first few lines of Ch10_002.py look like --
+
+import math
+import pandas as pd
+import torch
+from torch import nn
+from d2l import torch as d2l
+
+However, when I tried to get Ch10_002_local.py to run with the d2l_torch_local.py, I had to modify such as --
+
+import math
+import pandas as pd
+import torch
+import d2l_torch_local as d2l
+from torch import nn
+
+In other words, I had to get rid of
+-- from d2l_torch_local import torch as d2l
+and added/inserted
+++ import d2l_torch_local as d2l
+
+And, remember what I did to get the torch.py to local --
+cp /Users/sfwu/anaconda3/envs/d2l2/lib/python3.9/site-packages/d2l/torch.py d2l_torch_local.py
+
+Why???

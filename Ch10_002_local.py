@@ -2,8 +2,9 @@
 import math
 import pandas as pd
 import torch
+import d2l_torch_local as d2l
 from torch import nn
-from d2l import torch as d2l
+# from d2l_torch_local import torch as d2l
 
 class PositionalEncoding(nn.Module):
     """Positonal encoding"""
@@ -229,7 +230,6 @@ decoder = TransformerDecoder(
     num_layers, dropout)
 net = d2l.EncoderDecoder(encoder, decoder)
 d2l.train_seq2seq(net, train_iter, lr, num_epochs, tgt_vocab, device)
-
 
 engs = ['go .', "i lost .", 'he\'s calm .', 'i\'m home .']
 fras = ['va !', 'j\'ai perdu .', 'il est calme .', 'je suis chez moi .']
